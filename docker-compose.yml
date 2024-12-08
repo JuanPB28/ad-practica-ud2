@@ -1,0 +1,30 @@
+services:
+  backend:
+    container_name: laravel
+    image: shinsenter/laravel:latest
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/var/www/html
+    networks:
+      containers:
+        ipv4_address: 172.10.0.10
+  
+  frontend:
+    container_name: api-consumer
+    image: juanpb/acceso-datos-docker:v1.0.1
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    networks:
+      containers:
+        ipv4_address: 172.10.0.20
+
+networks:
+  containers:
+    ipam:
+      config:
+        - subnet: 172.10.0.0/24
+  proxy:
+    external: true

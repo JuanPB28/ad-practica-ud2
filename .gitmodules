@@ -1,0 +1,6 @@
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/JuanPB28/docker-challenge.git
+[submodule "backend"]
+	path = backend
+	url = https://github.com/JuanPB28/ud2-storage-pub.git

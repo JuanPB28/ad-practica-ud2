@@ -1,15 +1,26 @@
 services:
+  mariadb:
+    image: bitnami/mariadb:latest
+    environment:
+      - MARIADB_USER=my_user
+      - MARIADB_DATABASE=my_database
+      - MARIADB_PASSWORD=my_password
+      - MARIADB_ROOT_PASSWORD=my_password
   backend:
     container_name: laravel
-    image: shinsenter/laravel:latest
+    image: bitnami/laravel:latest
     restart: unless-stopped
     ports:
       - "8000:8000"
+    environment:
+      - DB_HOST=mariadb
+      - DB_USERNAME=my_user
+      - DB_DATABASE=my_database
+      - DB_PASSWORD=my_password
+    depends_on:
+      - mariadb
     volumes:
-      - ./backend:/var/www/html
-    networks:
-      containers:
-        ipv4_address: 172.10.0.10
+      - ./backend:/app
   
   frontend:
     container_name: api-consumer
@@ -17,14 +28,3 @@ services:
     restart: unless-stopped
     ports:
       - "80:80"
-    networks:
-      containers:
-        ipv4_address: 172.10.0.20
-
-networks:
-  containers:
-    ipam:
-      config:
-        - subnet: 172.10.0.0/24
-  proxy:
-    external: true

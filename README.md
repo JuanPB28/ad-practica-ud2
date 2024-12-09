@@ -4,7 +4,17 @@
 
 App en React que consume una API REST hecha con Laravel. 
 
+## Requisitos
+
+- Docker Engine y Docker Compose
+- Tener descargado el proyecto
+
 ## Instalación
+
+Descargar el proyecto:
+```bash
+git clone https://github.com/JuanPB28/ad-practica-ud2.git
+```
 
 Para la instalación, entrar en la carpeta del proyecto y correr el siguiente comando:
 ```bash

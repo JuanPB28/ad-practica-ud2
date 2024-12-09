@@ -24,7 +24,7 @@ services:
   
   frontend:
     container_name: api-consumer
-    image: juanpb/acceso-datos-docker:v1.0.1
+    image: juanpb/acceso-datos-docker:v1.0.2
     restart: unless-stopped
     ports:
       - "80:80"

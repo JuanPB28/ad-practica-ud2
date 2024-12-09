@@ -1,5 +1,6 @@
 services:
   mariadb:
+    container_name: db
     image: bitnami/mariadb:latest
     environment:
       - MARIADB_USER=my_user
